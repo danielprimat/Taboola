@@ -1,13 +1,8 @@
 package com.taboola;
-
 import android.content.pm.PackageInfo;
-
 import androidx.annotation.NonNull;
-
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,8 +46,6 @@ public class AppInfoModule extends ReactContextBaseJavaModule {
     public String getName() {
         return "AppInfoModule";
     }
-
-
 
 
 }

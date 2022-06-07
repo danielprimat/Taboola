@@ -1,10 +1,7 @@
 package com.taboola;
-
 import android.app.UiModeManager;
 import android.content.Context;
-
 import androidx.annotation.NonNull;
-
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -29,10 +26,8 @@ public class DarkModeModule extends ReactContextBaseJavaModule {
     public void setNightMode(boolean isNightMode) {
         UiModeManager uiManager = (UiModeManager) reactContext.getSystemService(Context.UI_MODE_SERVICE);
         if (isNightMode) {
-//            uiManager.enableCarMode(0);
             uiManager.setNightMode(UiModeManager.MODE_NIGHT_YES);
         } else {
-//            uiManager.disableCarMode(0);
             uiManager.setNightMode(UiModeManager.MODE_NIGHT_NO);
         }
 

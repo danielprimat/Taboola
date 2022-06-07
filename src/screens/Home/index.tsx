@@ -74,6 +74,8 @@ const Home: FC = () => {
   );
 };
 
+export default observer(Home);
+
 export const styles = StyleSheet.create({
   input: {
     borderBottomRightRadius: 0,
@@ -93,4 +95,3 @@ export const styles = StyleSheet.create({
   },
   controllerContainer: {flexDirection: 'row'},
 });
-export default observer(Home);
