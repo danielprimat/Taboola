@@ -1,4 +1,4 @@
-import {Image, View} from 'react-native';
+import {Image, useColorScheme, View} from 'react-native';
 
 import {FALLBACK_IMAGE} from '../../constants';
 import * as React from 'react';
@@ -8,7 +8,9 @@ import AppText from '../AppText';
 import styles from './styles';
 
 const Widget: FC<ListItem> = ({gallery, title}) => {
-  const style = styles();
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const style = styles(isDarkMode);
   return (
     <View style={style.item}>
       <Image

@@ -8,4 +8,3 @@ export const SWITCH_IOS = '#3e3e3e';
 export const trackColor = '#767577';
 export const trackColor2 = '#81b0ff';
 export const WHITE = '#fff';
-export const GREEN = '#00ff00';

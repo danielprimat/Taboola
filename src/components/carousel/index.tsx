@@ -1,4 +1,4 @@
-import {FlatList, FlatListProps, useColorScheme, View} from 'react-native';
+import {FlatList, FlatListProps, View} from 'react-native';
 import * as React from 'react';
 import {FC} from 'react';
 import {ListItem} from '../../API';
@@ -7,8 +7,7 @@ import styles from '../container/styles';
 declare interface CarouselProps extends FlatListProps<ListItem> {}
 
 const Carousel: FC<CarouselProps> = ({...props}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  const style = styles(isDarkMode);
+  const style = styles();
 
   return (
     <View style={style.container}>
