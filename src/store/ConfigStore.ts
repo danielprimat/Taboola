@@ -1,19 +1,20 @@
-import { action, makeObservable, observable } from "mobx";
-import { getUserNameAsyncStorage, isValidName, saveUseNameAsyncStorage } from "../utils";
-import { Alert } from "react-native";
-
+import {action, makeObservable, observable} from 'mobx';
+import {
+  getUserNameAsyncStorage,
+  isValidName,
+  saveUseNameAsyncStorage,
+} from '../utils';
+import {Alert} from 'react-native';
 
 export class ConfigStore {
-
   public userName: string;
 
   constructor() {
-    this.userName = "";
+    this.userName = '';
     makeObservable(this, {
       userName: observable,
-      setUseName: action
+      setUseName: action,
     });
-
   }
 
   setUseName(userName: string) {
@@ -25,18 +26,15 @@ export class ConfigStore {
     try {
       if (isValidName(this.userName)) {
         await saveUseNameAsyncStorage(this.userName);
-        Alert.alert('user saved')
+        Alert.alert('user saved');
       } else {
-        throw Error("name is not valid");
+        throw Error('name is not valid');
       }
     } catch (e) {
       console.error(e);
-      Alert.alert("Please enter valid name");
+      Alert.alert('Please enter valid name');
     }
-
-
   }
-
 
   public async getUserName() {
     try {
@@ -44,12 +42,10 @@ export class ConfigStore {
       if (userName) {
         this.setUseName(userName);
       } else {
-        throw Error("name is not exist");
+        throw Error('name is not exist');
       }
     } catch (error) {
       console.error(error);
-
     }
   }
 }
-

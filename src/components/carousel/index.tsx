@@ -1,15 +1,13 @@
-import { FlatList, FlatListProps, useColorScheme, View } from "react-native";
-import * as React from "react";
-import { FC } from "react";
-import { ListItem } from "../../API";
-import styles from "../container/styles";
+import {FlatList, FlatListProps, useColorScheme, View} from 'react-native';
+import * as React from 'react';
+import {FC} from 'react';
+import {ListItem} from '../../API';
+import styles from '../container/styles';
 
-declare interface CarouselProps extends FlatListProps<ListItem> {
+declare interface CarouselProps extends FlatListProps<ListItem> {}
 
-}
-
-const Carousel: FC<CarouselProps> = ({ ...props }) => {
-  const isDarkMode = useColorScheme() === "dark";
+const Carousel: FC<CarouselProps> = ({...props}) => {
+  const isDarkMode = useColorScheme() === 'dark';
   const style = styles(isDarkMode);
 
   return (
@@ -22,7 +20,6 @@ const Carousel: FC<CarouselProps> = ({ ...props }) => {
         showsHorizontalScrollIndicator={false}
       />
     </View>
-
   );
 };
 

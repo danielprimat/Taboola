@@ -1,17 +1,20 @@
-import { FC } from "react";
-import { KeyboardAvoidingView, KeyboardAvoidingViewProps, Platform } from "react-native";
-import * as React from "react";
+import {FC} from 'react';
+import {
+  KeyboardAvoidingView,
+  KeyboardAvoidingViewProps,
+  Platform,
+  StyleSheet,
+} from 'react-native';
+import * as React from 'react';
 
-declare interface AppKeyboardAvoidingView extends KeyboardAvoidingViewProps {
+declare interface AppKeyboardAvoidingView extends KeyboardAvoidingViewProps {}
 
-}
-
-const AppKeyboardAvoidingView: FC<AppKeyboardAvoidingView> = ({ ...props }) => {
+const AppKeyboardAvoidingView: FC<AppKeyboardAvoidingView> = ({...props}) => {
   return (
     <KeyboardAvoidingView
       {...props}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
       keyboardVerticalOffset={100}>
       {props.children}
     </KeyboardAvoidingView>
@@ -19,3 +22,10 @@ const AppKeyboardAvoidingView: FC<AppKeyboardAvoidingView> = ({ ...props }) => {
 };
 
 export default AppKeyboardAvoidingView;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+});

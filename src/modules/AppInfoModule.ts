@@ -1,6 +1,6 @@
-import { NativeModules } from "react-native";
+import {NativeModules} from 'react-native';
 
-const { AppInfoModule } = NativeModules;
+const {AppInfoModule} = NativeModules;
 
 interface AppInfoModuleType {
   appVersion: string;
@@ -8,5 +8,3 @@ interface AppInfoModuleType {
 }
 
 export default AppInfoModule as AppInfoModuleType;
-
-

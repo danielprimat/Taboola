@@ -1,6 +1,6 @@
-import { createContext } from "react";
-import { ListStore } from "./ListStore";
-import { ConfigStore } from "./ConfigStore";
+import {createContext} from 'react';
+import {ListStore} from './ListStore';
+import {ConfigStore} from './ConfigStore';
 
 export const stores = Object.freeze({
   listStore: new ListStore(),

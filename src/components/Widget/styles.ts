@@ -1,22 +1,18 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
-const styles = (isDarkMode: boolean) => (
+const styles = () =>
   StyleSheet.create({
     item: {
       margin: 10,
-      alignItems: "center"
+      alignItems: 'center',
     },
     itemPhoto: {
       width: 200,
-      height: 200
-
-
+      height: 200,
     },
     itemText: {
-      color: "green",
-      marginTop: 5
+      color: 'green',
+      marginTop: 5,
     },
-
-  })
-);
-export default styles
+  });
+export default styles;

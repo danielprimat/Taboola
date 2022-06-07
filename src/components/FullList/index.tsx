@@ -3,44 +3,37 @@ import {
   ListRenderItem,
   SectionList,
   SectionListData,
-  SectionListProps, SectionListRenderItemInfo,
-  Text, TextProps,
-  useColorScheme,
+  SectionListProps,
+  TextProps,
   View,
-  ViewProps
-} from "react-native";
-import { TABOOLA, TABOOLA_FEED } from "../../constants";
-import * as React from "react";
-import { FC } from "react";
-import { ListItem } from "../../API";
-import Carousel from "../carousel";
-import TaboolaWidget from "../taboolaWidget";
-import AppText from "../AppText";
-import TaboolaFeed from "../TaboolaFeed";
-import styles from "./styles";
-import Widget from "../Widget";
+  ViewProps,
+} from 'react-native';
+import {TABOOLA, TABOOLA_FEED} from '../../constants';
+import * as React from 'react';
+import {FC} from 'react';
+import {ListItem} from '../../API';
+import Carousel from '../carousel';
+import TaboolaWidget from '../taboolaWidget';
+import AppText from '../AppText';
+import TaboolaFeed from '../TaboolaFeed';
+import styles from './styles';
+import Widget from '../Widget';
 
-declare interface ItemsListProps extends SectionListProps<ListItem> {
-
-}
+declare interface ItemsListProps extends SectionListProps<ListItem> {}
 
 type RenderSectionHeader<ItemT> =
-  ((info: { section: SectionListData<ItemT, DefaultSectionT> }) => React.ReactElement | null)
+  | ((info: {
+      section: SectionListData<ItemT, DefaultSectionT>;
+    }) => React.ReactElement | null)
   | undefined;
 
-
-const FullList: FC<ItemsListProps> = ({
-                                        ...props
-                                      }) => {
-  const isDarkMode = useColorScheme() === "dark";
-  const style = styles(isDarkMode);
-
+const FullList: FC<ItemsListProps> = ({...props}) => {
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
+    <View style={styles.container}>
       <SectionList
         {...props}
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingHorizontal: 10 }}
+        style={styles.carousel}
+        contentContainerStyle={styles.contentContainerStyle}
         removeClippedSubviews={false}
         stickySectionHeadersEnabled={false}
         ListEmptyComponent={ListEmptyComponent}
@@ -51,8 +44,7 @@ const FullList: FC<ItemsListProps> = ({
   );
 };
 
-
-const renderListItem: ListRenderItem<ListItem> = ({ item }) => {
+const renderListItem: ListRenderItem<ListItem> = ({item}) => {
   if (item.title.rendered === TABOOLA_FEED) {
     return null;
   }
@@ -60,38 +52,32 @@ const renderListItem: ListRenderItem<ListItem> = ({ item }) => {
     <TaboolaWidget />
   ) : (
     <Widget {...item} />
-
   );
 };
 
+const ListEmptyComponent: FC<ViewProps & TextProps> = ({...props}) => (
+  <View {...props} style={styles.emptyList}>
+    <AppText style={styles.carousel}>No results!</AppText>
+  </View>
+);
 
-const ListEmptyComponent: FC<ViewProps & TextProps> = ({ ...props }) =>
-  <View
-    style={{ justifyContent: "center", alignContent: "center", flex: 1, alignItems: "center", alignSelf: "center" }}>
-    <AppText style={{ flex: 1 }}>
-      No results!
-    </AppText>
-  </View>;
-
-
-const renderHorizontalRow: RenderSectionHeader<ListItem> = ({ section }) => (
+const renderHorizontalRow: RenderSectionHeader<ListItem> = ({section}) => (
   <Carousel
-    style={{ flex: 1 }}
-    keyExtractor={({ id }) => id.toString()}
+    style={styles.carousel}
+    keyExtractor={({id}) => id.toString()}
     data={section.data}
     renderItem={renderListItem}
   />
 );
 
-const renderLastItem: ({ item }: { item: ListItem }) => (JSX.Element | null) = ({ item }) => {
+const renderLastItem: ({item}: {item: ListItem}) => JSX.Element | null = ({
+  item,
+}) => {
   if (item.title.rendered === TABOOLA_FEED) {
     return <TaboolaFeed />;
   } else {
     return null;
   }
-
-
 };
-
 
 export default FullList;

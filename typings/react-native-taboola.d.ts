@@ -1,12 +1,10 @@
-declare module "@taboola/react-native-taboola" {
-  import React from "react";
-  import { ViewProps } from "react-native";
+declare module '@taboola/react-native-taboola' {
+  import React from 'react';
+  import {ViewProps} from 'react-native';
 
-  class RNTaboolaView extends React.Component<RNTaboolaViewProps> {
-  }
+  class RNTaboolaView extends React.Component<RNTaboolaViewProps> {}
 
   export default RNTaboolaView;
-
 
   export interface RNTaboolaViewProps extends ViewProps {
     /**
@@ -81,8 +79,4 @@ declare module "@taboola/react-native-taboola" {
      */
     onItemClick?: (event: any) => void;
   }
-
-
 }
-
-

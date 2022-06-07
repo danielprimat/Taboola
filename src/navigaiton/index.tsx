@@ -1,29 +1,30 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { DarkTheme, DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import * as React from "react";
-import Home from "../screens/Home";
-import SettingsScreen from "../screens/Settings";
-import { createStackNavigator } from "@react-navigation/stack";
-import SearchResults from "../screens/SearchResults";
-import { useColorScheme } from "react-native";
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
+import * as React from 'react';
+import Home from '../screens/Home';
+import SettingsScreen from '../screens/Settings';
+import {createStackNavigator} from '@react-navigation/stack';
+import SearchResults from '../screens/SearchResults';
+import {useColorScheme} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-
 export type RootStackParamList = {
-  Home: undefined
-  Settings: undefined
-  SearchResults: undefined
+  Home: undefined;
+  Settings: undefined;
+  SearchResults: undefined;
 };
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {
-    }
+    interface RootParamList extends RootStackParamList {}
   }
 }
 const Stack = createStackNavigator();
-
 
 const HomeStack = () => {
   return (
@@ -35,7 +36,7 @@ const HomeStack = () => {
 };
 
 const AppNavigator = () => {
-  const isDarkMode = useColorScheme() === "dark";
+  const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
@@ -43,7 +44,7 @@ const AppNavigator = () => {
         <Stack.Screen
           name="HomeStack"
           component={HomeStack}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen name="SearchResults" component={SearchResults} />
       </Stack.Navigator>
@@ -52,7 +53,3 @@ const AppNavigator = () => {
 };
 
 export default AppNavigator;
-
-
-
-
