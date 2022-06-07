@@ -1,5 +1,5 @@
 //
-//  RCTAppVersionModule.h
+//  AppInfoModule.h
 //  Taboola
 //
 //  Created by Dani on 07/06/2022.

@@ -17,14 +17,9 @@ import AppContainer from '../../components/container';
 import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import AppInfoModule from '../../modules/AppInfoModule';
 import DarkModeModule from '../../modules/darkMode.android';
-import {
-  GRAY,
-  SWITCH_DARK_MODE,
-  SWITCH_IOS,
-  SWITCH_LIGHT_MODE,
-  trackColor,
-  trackColor2,
-} from '../../theme/colors';
+import colors from '../../theme';
+
+import {SETTINGS_DISPLAY_PATH} from '../../constants';
 
 const SettingsScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -61,12 +56,14 @@ const SettingsScreen: FC = () => {
         <SettingsItemContainer>
           <AppText style={styles.appText}>Switch to dark mode</AppText>
           <Switch
-            trackColor={{false: trackColor, true: trackColor2}}
-            thumbColor={isDarkMode ? SWITCH_DARK_MODE : SWITCH_LIGHT_MODE}
-            ios_backgroundColor={SWITCH_IOS}
+            trackColor={{false: colors.trackColor, true: colors.trackColor2}}
+            thumbColor={
+              isDarkMode ? colors.SWITCH_DARK_MODE : colors.SWITCH_LIGHT_MODE
+            }
+            ios_backgroundColor={colors.SWITCH_IOS}
             onValueChange={() => {
               Platform.OS === 'ios'
-                ? Linking.openURL('App-Prefs:DISPLAY')
+                ? Linking.openURL(SETTINGS_DISPLAY_PATH)
                 : DarkModeModule.setNightMode(!isDarkMode);
               configStore.setIsDarkMode(isDarkMode);
             }}
@@ -90,7 +87,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 0.9,
     borderRadius: 10,
-    backgroundColor: GRAY,
+    backgroundColor: colors.GRAY,
   },
   settings: {
     flexDirection: 'row',

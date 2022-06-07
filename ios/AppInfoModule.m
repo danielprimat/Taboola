@@ -1,5 +1,5 @@
 //
-//  RCTAppVersionModule.m
+//  AppInfoModule.m
 //  Taboola
 //
 //  Created by Dani on 07/06/2022.
@@ -21,10 +21,8 @@ RCT_EXPORT_MODULE();
 }
 - (NSDictionary *)constantsToExport {
     return @{
-   
          @"appVersion": [self getAppVersion],
          @"appName": [self getAppName],
-  
      };
 }
 
