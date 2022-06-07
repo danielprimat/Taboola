@@ -9,7 +9,8 @@ import Home from '../screens/Home';
 import SettingsScreen from '../screens/Settings';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchResults from '../screens/SearchResults';
-import {useColorScheme} from 'react-native';
+import {useStore} from '../hooks/useStore';
+import {observer} from 'mobx-react-lite';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +37,7 @@ const HomeStack = () => {
 };
 
 const AppNavigator = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {isDarkMode} = useStore('configStore');
 
   return (
     <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
@@ -52,4 +53,4 @@ const AppNavigator = () => {
   );
 };
 
-export default AppNavigator;
+export default observer(AppNavigator);

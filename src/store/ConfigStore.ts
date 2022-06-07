@@ -8,15 +8,21 @@ import {Alert} from 'react-native';
 
 export class ConfigStore {
   public userName: string;
+  public isDarkMode: boolean;
 
   constructor() {
     this.userName = '';
+    this.isDarkMode = false;
     makeObservable(this, {
       userName: observable,
       setUseName: action,
+      isDarkMode: observable,
+      setIsDarkMode: action,
     });
   }
-
+  setIsDarkMode(isDarkMode: boolean) {
+    this.isDarkMode = isDarkMode;
+  }
   setUseName(userName: string) {
     console.log(userName);
     this.userName = userName;

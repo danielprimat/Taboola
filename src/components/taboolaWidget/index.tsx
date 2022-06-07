@@ -1,11 +1,12 @@
 import RNTaboolaView from '@taboola/react-native-taboola';
 import * as React from 'react';
-import {useColorScheme, View} from 'react-native';
+import {View} from 'react-native';
 import {FC} from 'react';
 import styles from './styles';
+import {useStore} from '../../hooks/useStore';
 
 const TaboolaWidget: FC = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {isDarkMode} = useStore('configStore');
 
   return (
     <View style={styles.container}>

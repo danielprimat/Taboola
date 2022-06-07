@@ -68,6 +68,7 @@ const SettingsScreen: FC = () => {
               Platform.OS === 'ios'
                 ? Linking.openURL('App-Prefs:DISPLAY')
                 : DarkModeModule.setNightMode(!isDarkMode);
+              configStore.setIsDarkMode(isDarkMode);
             }}
             value={isDarkMode}
           />

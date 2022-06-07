@@ -1,4 +1,3 @@
-import {useColorScheme} from 'react-native';
 import * as React from 'react';
 
 import {useStore} from '../../hooks/useStore';
@@ -8,7 +7,7 @@ import FullList from '../../components/FullList';
 
 const SearchResults = () => {
   const listStore = useStore('listStore');
-  const isDarkMode = useColorScheme() === 'dark';
+  const {isDarkMode} = useStore('configStore');
 
   return (
     <AppContainer isDarkMode={isDarkMode}>
