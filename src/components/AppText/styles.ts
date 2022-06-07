@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {DARK_TEXT, LIGHT_TEXT} from '../../theme/colors';
+import colors from '../../theme';
 
 const styles = (isDarkMode: boolean) =>
   StyleSheet.create({
     textStyle: {
-      color: isDarkMode ? DARK_TEXT : LIGHT_TEXT,
+      color: isDarkMode ? colors.DARK_TEXT : colors.LIGHT_TEXT,
     },
   });
 export default styles;

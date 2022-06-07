@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {DARK_TEXT, LIGHT_TEXT} from '../../theme/colors';
+import colors from '../../theme';
 
 const styles = (isDarkMode: boolean) =>
   StyleSheet.create({
@@ -12,7 +12,7 @@ const styles = (isDarkMode: boolean) =>
       height: 200,
     },
     itemText: {
-      color: isDarkMode ? DARK_TEXT : LIGHT_TEXT,
+      color: isDarkMode ? colors.DARK_TEXT : colors.LIGHT_TEXT,
       marginTop: 5,
     },
   });

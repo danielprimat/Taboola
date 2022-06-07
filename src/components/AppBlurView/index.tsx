@@ -2,7 +2,7 @@ import {BlurView, BlurViewProperties} from '@react-native-community/blur';
 import * as React from 'react';
 import {FC} from 'react';
 import {StyleSheet} from 'react-native';
-import {WHITE} from '../../theme/colors';
+import {WHITE} from '../../theme';
 
 declare interface AppBlurViewProps extends BlurViewProperties {
   isDarkMode: boolean;
