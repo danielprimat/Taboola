@@ -7,12 +7,12 @@ import {useNavigation} from '@react-navigation/native';
 import {RequestStatus} from '../../store/ListStore';
 import AppText from '../../components/AppText';
 import AppInput from '../../components/AppInput';
-import AppContainer from '../../components/container';
 import AppBlurView from '../../components/AppBlurView';
 import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import FullList from '../../components/FullList';
 import AppButton from '../../components/AppButton';
-import {GRAY, SPINNER_COLOR} from '../../theme/colors';
+import {GRAY, SPINNER_COLOR} from '../../theme';
+import AppContainer from '../../components/AppContainer';
 
 const Home: FC = () => {
   const listStore = useStore('listStore');

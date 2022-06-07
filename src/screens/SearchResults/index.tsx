@@ -1,9 +1,7 @@
 import * as React from 'react';
-
 import {useStore} from '../../hooks/useStore';
-
-import AppContainer from '../../components/container';
 import FullList from '../../components/FullList';
+import AppContainer from '../../components/AppContainer';
 
 const SearchResults = () => {
   const listStore = useStore('listStore');

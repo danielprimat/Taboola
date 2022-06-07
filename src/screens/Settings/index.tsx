@@ -13,13 +13,13 @@ import {
 import {useStore} from '../../hooks/useStore';
 import AppText from '../../components/AppText';
 import AppInput from '../../components/AppInput';
-import AppContainer from '../../components/container';
 import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import AppInfoModule from '../../modules/AppInfoModule';
 import DarkModeModule from '../../modules/darkMode.android';
 import colors from '../../theme';
 
 import {SETTINGS_DISPLAY_PATH} from '../../constants';
+import AppContainer from '../../components/AppContainer';
 
 const SettingsScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';

@@ -2,7 +2,7 @@ import {FlatList, FlatListProps, View} from 'react-native';
 import * as React from 'react';
 import {FC} from 'react';
 import {ListItem} from '../../API';
-import styles from '../container/styles';
+import styles from './styles';
 
 declare interface CarouselProps extends FlatListProps<ListItem> {}
 
