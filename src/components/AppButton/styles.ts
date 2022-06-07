@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {GRAY} from '../../theme/colors';
 
 const styles = StyleSheet.create({
   AppButtonHome: {
     justifyContent: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,

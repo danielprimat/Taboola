@@ -17,7 +17,7 @@ import AppBlurView from '../../components/AppBlurView';
 import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import FullList from '../../components/FullList';
 import AppButton from '../../components/AppButton';
-import {SPINNER_COLOR} from '../../theme/colors';
+import {GRAY, SPINNER_COLOR} from '../../theme/colors';
 
 const Home: FC = () => {
   const listStore = useStore('listStore');
@@ -81,12 +81,12 @@ export const styles = StyleSheet.create({
     height: 40,
     width: '80%',
     borderRadius: 10,
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
   },
   spinner: {justifyContent: 'center', flex: 1},
   appButton: {
     justifyContent: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,

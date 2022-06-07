@@ -1,3 +1,11 @@
 export const DARK_TEXT = '#fff';
 export const LIGHT_TEXT = '#000';
 export const SPINNER_COLOR = '#00ff00';
+export const GRAY = '#c2cdc2';
+export const SWITCH_DARK_MODE = '#f5dd4b';
+export const SWITCH_LIGHT_MODE = '#f4f3f4';
+export const SWITCH_IOS = '#3e3e3e';
+export const trackColor = '#767577';
+export const trackColor2 = '#81b0ff';
+export const WHITE = '#fff';
+export const GREEN = '#00ff00';

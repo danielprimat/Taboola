@@ -17,6 +17,14 @@ import AppContainer from '../../components/container';
 import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import AppInfoModule from '../../modules/AppInfoModule';
 import DarkModeModule from '../../modules/darkMode.android';
+import {
+  GRAY,
+  SWITCH_DARK_MODE,
+  SWITCH_IOS,
+  SWITCH_LIGHT_MODE,
+  trackColor,
+  trackColor2,
+} from '../../theme/colors';
 
 const SettingsScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -53,9 +61,9 @@ const SettingsScreen: FC = () => {
         <SettingsItemContainer>
           <AppText style={styles.appText}>Switch to dark mode</AppText>
           <Switch
-            trackColor={{false: '#767577', true: '#81b0ff'}}
-            thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
-            ios_backgroundColor="#3e3e3e"
+            trackColor={{false: trackColor, true: trackColor2}}
+            thumbColor={isDarkMode ? SWITCH_DARK_MODE : SWITCH_LIGHT_MODE}
+            ios_backgroundColor={SWITCH_IOS}
             onValueChange={() => {
               Platform.OS === 'ios'
                 ? Linking.openURL('App-Prefs:DISPLAY')
@@ -81,7 +89,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 0.9,
     borderRadius: 10,
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
   },
   settings: {
     flexDirection: 'row',

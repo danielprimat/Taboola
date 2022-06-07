@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {GRAY} from '../../theme/colors';
 
 const styles = StyleSheet.create({
   input: {
     height: 40,
     width: '80%',
     borderRadius: 10,
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
   },
   homeInput: {
     borderBottomRightRadius: 0,
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: '80%',
     borderRadius: 10,
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
   },
 });
 export default styles;

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {GREEN} from '../../theme/colors';
 
 const styles = () =>
   StyleSheet.create({
@@ -11,7 +12,7 @@ const styles = () =>
       height: 200,
     },
     itemText: {
-      color: 'green',
+      color: GREEN,
       marginTop: 5,
     },
   });

@@ -7,6 +7,7 @@ import {
 import AppText from '../AppText';
 import * as React from 'react';
 import {FC} from 'react';
+import {GRAY} from '../../theme/colors';
 declare interface AppButtonProps extends TouchableOpacityProps {
   title: string;
   titleStyle?: TextStyle;
@@ -23,7 +24,7 @@ export default AppButton;
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    backgroundColor: 'grey',
+    backgroundColor: GRAY,
     borderRadius: 10,
     borderBottomLeftRadius: 0,
     borderTopLeftRadius: 0,
