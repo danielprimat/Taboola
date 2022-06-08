@@ -6,14 +6,14 @@ import {useColorScheme} from 'react-native';
 
 const App = () => {
   const listStore = useStore('listStore');
-  const {getUserName} = useStore('configStore');
+  const configStore = useStore('configStore');
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
     listStore.loadList();
   }, [isDarkMode]);
   useEffect(() => {
-    getUserName();
+    configStore.getUserName();
   }, []);
 
   return <HomeTabNavigator />;
