@@ -1,4 +1,9 @@
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  useColorScheme,
+  View,
+} from 'react-native';
 import * as React from 'react';
 import {FC, useCallback, useState} from 'react';
 import {observer} from 'mobx-react-lite';
@@ -20,7 +25,7 @@ const Home: FC = () => {
   const configStore = useStore('configStore');
   const navigation = useNavigation();
   const [isFocusInput, setIsFocusInput] = useState<boolean>(false);
-  const {isDarkMode} = useStore('configStore');
+  const isDarkMode = useColorScheme() === 'dark';
 
   const onSearchPress = useCallback(() => {
     navigation.navigate('SearchResults');

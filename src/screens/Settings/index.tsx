@@ -30,8 +30,8 @@ import AppContainer from '../../components/AppContainer';
 
 const SettingsScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const configStore = useStore('configStore');
-  const [userName, setUserName] = useState<string>('');
+  const {userName, saveUserNameAsyncStorage} = useStore('configStore');
+  const [userNameLocal, setUserName] = useState<string>('');
   return (
     <AppKeyboardAvoidingView>
       <SettingsItemContainer>
@@ -41,13 +41,13 @@ const SettingsScreen: FC = () => {
           textContentType={'name'}
           style={styles.input}
           onChangeText={setUserName}
-          placeholder={configStore.userName}
+          placeholder={userName}
         />
       </SettingsItemContainer>
       <Button
         title={SAVE}
         onPress={() => {
-          configStore.saveUserNameAsyncStorage(userName);
+          saveUserNameAsyncStorage(userNameLocal);
         }}
       />
       <AppContainer style={styles.appContainer} isDarkMode={isDarkMode}>
@@ -72,7 +72,6 @@ const SettingsScreen: FC = () => {
               Platform.OS === 'ios'
                 ? Linking.openURL(SETTINGS_DISPLAY_PATH)
                 : DarkModeModule.setNightMode(!isDarkMode);
-              configStore.setIsDarkMode(isDarkMode);
             }}
             value={isDarkMode}
           />

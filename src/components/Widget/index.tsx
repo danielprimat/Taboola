@@ -1,4 +1,4 @@
-import {Image, View} from 'react-native';
+import {Image, useColorScheme, View} from 'react-native';
 
 import {FALLBACK_IMAGE} from '../../constants';
 import * as React from 'react';
@@ -6,10 +6,9 @@ import {ListItem} from '../../API';
 import {FC} from 'react';
 import AppText from '../AppText';
 import styles from './styles';
-import {useStore} from '../../hooks/useStore';
 
 const Widget: FC<ListItem> = ({gallery, title}) => {
-  const {isDarkMode} = useStore('configStore');
+  const isDarkMode = useColorScheme() === 'dark';
 
   const style = styles(isDarkMode);
   return (
