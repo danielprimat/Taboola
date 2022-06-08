@@ -11,8 +11,11 @@ const App = () => {
 
   useEffect(() => {
     listStore.loadList();
-    getUserName();
   }, [isDarkMode]);
+  useEffect(() => {
+    getUserName();
+  }, []);
+
   return <HomeTabNavigator />;
 };
 
