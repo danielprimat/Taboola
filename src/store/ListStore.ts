@@ -72,21 +72,7 @@ export class ListStore {
   public async loadList() {
     try {
       this.setRequestStatus(RequestStatus.loading);
-      // const previousArray = await getItemsArray();
       const response = await getList();
-      // if (previousArray) {
-      //   if (previousArray.length === response.length) {
-      //     for (let i = 0; previousArray.length > i; i++) {
-      //       if (!itemsAreTheSame(previousArray[i], response[i])) {
-      //         response.reverse();
-      //       }
-      //     }
-      //   } else {
-      //     response.reverse();
-      //   }
-      // }
-
-      // await saveItemsArray(response);
       this.setList(response);
       this.setRequestStatus(RequestStatus.succeeded);
     } catch (error) {
