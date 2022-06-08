@@ -1,11 +1,6 @@
 import {action, computed, makeObservable, observable} from 'mobx';
 import {getList, ListItem} from '../API';
-import {
-  getItemsArray,
-  itemsAreTheSame,
-  saveItemsArray,
-  splitIntoChunks,
-} from '../utils';
+import {splitIntoChunks} from '../utils';
 
 export declare interface ListRow {
   data: ListItem[];
