@@ -1,6 +1,11 @@
-import { action, computed, makeObservable, observable } from "mobx";
-import { getList, ListItem } from "../API";
-import { getItemsArray, itemsAreTheSame, saveItemsArray, splitIntoChunks } from "../utils";
+import {action, computed, makeObservable, observable} from 'mobx';
+import {getList, ListItem} from '../API';
+import {
+  getItemsArray,
+  itemsAreTheSame,
+  saveItemsArray,
+  splitIntoChunks,
+} from '../utils';
 
 export declare interface ListRow {
   data: ListItem[];
@@ -9,10 +14,10 @@ export declare interface ListRow {
 export type FormattedList = ListRow[];
 
 export enum RequestStatus {
-  "idle",
-  "loading",
-  "succeeded",
-  "failed",
+  'idle',
+  'loading',
+  'succeeded',
+  'failed',
 }
 
 export class ListStore {
@@ -22,7 +27,7 @@ export class ListStore {
 
   constructor() {
     this.list = undefined;
-    this.targetValue = "";
+    this.targetValue = '';
     this.requestStatus = RequestStatus.idle;
     makeObservable(this, {
       setList: action,
@@ -32,7 +37,7 @@ export class ListStore {
       formattedList: computed,
       filteredList: computed,
       targetValue: observable,
-      requestStatus: observable
+      requestStatus: observable,
     });
   }
 
@@ -41,12 +46,12 @@ export class ListStore {
   }
 
   get filteredList(): FormattedList {
-    if (!this.targetValue.replace(/\s/g, "")) {
+    if (!this.targetValue.replace(/\s/g, '')) {
       return [];
     }
     const matches = this.list?.filter(item => {
-      let cleanedSpacesString = item.title.rendered.replace(/\s/g, "");
-      let cleanedSpacesStringTargetValue = this.targetValue.replace(/\s/g, "");
+      let cleanedSpacesString = item.title.rendered.replace(/\s/g, '');
+      let cleanedSpacesStringTargetValue = this.targetValue.replace(/\s/g, '');
       return cleanedSpacesString.includes(cleanedSpacesStringTargetValue);
     });
     return splitIntoChunks(matches);
@@ -67,18 +72,21 @@ export class ListStore {
   public async loadList() {
     try {
       this.setRequestStatus(RequestStatus.loading);
-      const previousArray = await getItemsArray();
+      // const previousArray = await getItemsArray();
       const response = await getList();
+      // if (previousArray) {
+      //   if (previousArray.length === response.length) {
+      //     for (let i = 0; previousArray.length > i; i++) {
+      //       if (!itemsAreTheSame(previousArray[i], response[i])) {
+      //         response.reverse();
+      //       }
+      //     }
+      //   } else {
+      //     response.reverse();
+      //   }
+      // }
 
-      if (previousArray && previousArray.length === response.length) {
-        for (let i = 0; previousArray.length > i; i++) {
-          if (!itemsAreTheSame(previousArray[i], response[i])) {
-            response.reverse();
-          }
-        }
-      }
-
-      await saveItemsArray(response);
+      // await saveItemsArray(response);
       this.setList(response);
       this.setRequestStatus(RequestStatus.succeeded);
     } catch (error) {
@@ -87,4 +95,3 @@ export class ListStore {
     }
   }
 }
-
