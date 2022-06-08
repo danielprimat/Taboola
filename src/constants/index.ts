@@ -9,3 +9,6 @@ export const SAVE = 'Save';
 export const APP_NAME = 'App Name';
 export const APP_VERSION = 'App version';
 export const DARK_MODE = 'Switch to dark mode';
+export const WELCOME = 'Welcome';
+export const SEARCH_PLACEHOLDER = 'search for a place';
+export const SEARCH = 'Search';

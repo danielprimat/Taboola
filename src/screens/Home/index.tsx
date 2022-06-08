@@ -13,6 +13,7 @@ import FullList from '../../components/FullList';
 import AppButton from '../../components/AppButton';
 import {GRAY, SPINNER_COLOR} from '../../theme';
 import AppContainer from '../../components/AppContainer';
+import {SEARCH, SEARCH_PLACEHOLDER, WELCOME} from '../../constants';
 
 const Home: FC = () => {
   const listStore = useStore('listStore');
@@ -30,7 +31,9 @@ const Home: FC = () => {
     <AppKeyboardAvoidingView>
       <AppContainer isDarkMode={isDarkMode}>
         {!!configStore.userName && (
-          <AppText>Welcome {configStore.userName}</AppText>
+          <AppText>
+            {WELCOME} {configStore.userName}
+          </AppText>
         )}
         {listStore.requestStatus === RequestStatus.loading ? (
           <ActivityIndicator
@@ -53,12 +56,12 @@ const Home: FC = () => {
                 onFocus={() => setIsFocusInput(true)}
                 style={styles.input}
                 onChangeText={v => listStore.setTargetValue(v)}
-                placeholder={'search for a place'}
+                placeholder={SEARCH_PLACEHOLDER}
               />
 
               <AppButton
                 onPress={onSearchPress}
-                title={'Search'}
+                title={SEARCH}
                 style={styles.appButton}
               />
             </View>
