@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, useState} from 'react';
 import * as React from 'react';
 import {
   Button,
@@ -17,44 +17,51 @@ import AppKeyboardAvoidingView from '../../components/AppKeyboardAvoidingView';
 import AppInfoModule from '../../modules/AppInfoModule';
 import DarkModeModule from '../../modules/darkMode.android';
 import colors from '../../theme';
+import {
+  APP_NAME,
+  APP_VERSION,
+  DARK_MODE,
+  PLEASE_ENTER_YOUR_NAME,
+  SAVE,
+  SETTINGS_DISPLAY_PATH,
+} from '../../constants';
 
-import {SETTINGS_DISPLAY_PATH} from '../../constants';
 import AppContainer from '../../components/AppContainer';
 
 const SettingsScreen: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const configStore = useStore('configStore');
+  const [userName, setUserName] = useState<string>('');
   return (
     <AppKeyboardAvoidingView>
       <SettingsItemContainer>
-        <AppText style={styles.appText}>Please enter your name</AppText>
+        <AppText style={styles.appText}>{PLEASE_ENTER_YOUR_NAME}</AppText>
 
         <AppInput
+          textContentType={'name'}
           style={styles.input}
-          onChangeText={v => {
-            configStore.setUseName(v);
-          }}
+          onChangeText={setUserName}
           placeholder={configStore.userName}
         />
       </SettingsItemContainer>
       <Button
-        title="Save"
+        title={SAVE}
         onPress={() => {
-          configStore.saveUserNameAsyncStorage();
+          configStore.saveUserNameAsyncStorage(userName);
         }}
       />
       <AppContainer style={styles.appContainer} isDarkMode={isDarkMode}>
         <SettingsItemContainer>
-          <AppText style={styles.appText}>App Name</AppText>
+          <AppText style={styles.appText}>{APP_NAME}</AppText>
           <AppText>{AppInfoModule.appName}</AppText>
         </SettingsItemContainer>
         <SettingsItemContainer>
-          <AppText style={styles.appText}>App version</AppText>
+          <AppText style={styles.appText}>{APP_VERSION}</AppText>
           <AppText>{AppInfoModule.appVersion}</AppText>
         </SettingsItemContainer>
 
         <SettingsItemContainer>
-          <AppText style={styles.appText}>Switch to dark mode</AppText>
+          <AppText style={styles.appText}>{DARK_MODE}</AppText>
           <Switch
             trackColor={{false: colors.trackColor, true: colors.trackColor2}}
             thumbColor={

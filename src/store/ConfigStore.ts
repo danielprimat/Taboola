@@ -15,7 +15,7 @@ export class ConfigStore {
     this.isDarkMode = false;
     makeObservable(this, {
       userName: observable,
-      setUseName: action,
+      setUserName: action,
       isDarkMode: observable,
       setIsDarkMode: action,
     });
@@ -23,15 +23,16 @@ export class ConfigStore {
   setIsDarkMode(isDarkMode: boolean) {
     this.isDarkMode = isDarkMode;
   }
-  setUseName(userName: string) {
+  setUserName(userName: string) {
     console.log(userName);
     this.userName = userName;
   }
 
-  public async saveUserNameAsyncStorage() {
+  public async saveUserNameAsyncStorage(userName: string) {
     try {
-      if (isValidName(this.userName)) {
-        await saveUseNameAsyncStorage(this.userName);
+      if (isValidName(userName)) {
+        await saveUseNameAsyncStorage(userName);
+        this.setUserName(userName);
         Alert.alert('user saved');
       } else {
         throw Error('name is not valid');
@@ -46,7 +47,7 @@ export class ConfigStore {
     try {
       const userName = await getUserNameAsyncStorage();
       if (userName) {
-        this.setUseName(userName);
+        this.setUserName(userName);
       }
     } catch (error) {
       console.error(error);
