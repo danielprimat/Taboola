@@ -47,8 +47,6 @@ export class ConfigStore {
       const userName = await getUserNameAsyncStorage();
       if (userName) {
         this.setUseName(userName);
-      } else {
-        throw Error('name is not exist');
       }
     } catch (error) {
       console.error(error);

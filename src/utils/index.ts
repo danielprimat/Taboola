@@ -1,6 +1,6 @@
 import {ListItem} from '../API';
 import {FormattedList} from '../store/ListStore';
-import {TABOOLA, TABOOLA_FEED, USER_NAME} from '../constants';
+import {ITEMS_ARRAY, TABOOLA, TABOOLA_FEED, USER_NAME} from '../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const splitIntoChunks = (
@@ -39,6 +39,53 @@ export const getUserNameAsyncStorage = async () => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const getItemsArray = async (): Promise<ListItem[] | undefined> => {
+  try {
+    const data = await AsyncStorage.getItem(ITEMS_ARRAY);
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return undefined;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const saveItemsArray = async (itemsArray: ListItem[]) => {
+  try {
+    await AsyncStorage.setItem(ITEMS_ARRAY, JSON.stringify(itemsArray));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const itemsAreTheSame = (
+  previousItem: ListItem,
+  currentItem: ListItem,
+) => {
+  let objectsAreSame = true;
+  for (let propertyName in previousItem) {
+    if (
+      isString(previousItem[propertyName as keyof ListItem]) &&
+      isString(currentItem[propertyName as keyof ListItem])
+    ) {
+      if (
+        previousItem[propertyName as keyof ListItem] !==
+        currentItem[propertyName as keyof ListItem]
+      ) {
+        objectsAreSame = false;
+        break;
+      }
+    }
+  }
+  return objectsAreSame;
+};
+
+export const isString = (value: any) => {
+  return typeof value === 'string' || value instanceof String;
 };
 
 const TaboolaItem = {
