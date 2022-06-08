@@ -41,19 +41,17 @@ export class ListStore {
   }
 
   get filteredList(): FormattedList {
-    if (!this.targetValue.replace(/\s/g, '')) {
+    if (!this.targetValue) {
       return [];
     }
     const matches = this.list?.filter(item => {
-      let cleanedSpacesString = item.title.rendered.replace(/\s/g, '');
-      let cleanedSpacesStringTargetValue = this.targetValue.replace(/\s/g, '');
-      return cleanedSpacesString.includes(cleanedSpacesStringTargetValue);
+      return item.title.rendered.includes(this.targetValue);
     });
     return splitIntoChunks(matches);
   }
 
   setTargetValue(value: string) {
-    this.targetValue = value;
+    this.targetValue = value.trim();
   }
 
   setList(payload: ListItem[]) {
@@ -76,4 +74,3 @@ export class ListStore {
     }
   }
 }
-
