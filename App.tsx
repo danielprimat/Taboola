@@ -10,11 +10,10 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   useEffect(() => {
     configStore.setIsDarkMode(isDarkMode);
-  }, [isDarkMode]);
-  useEffect(() => {
     listStore.loadList();
     configStore.getUserName();
-  }, []);
+  }, [isDarkMode]);
+
   return <HomeTabNavigator />;
 };
 
