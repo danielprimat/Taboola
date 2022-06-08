@@ -24,7 +24,6 @@ export class ConfigStore {
     this.isDarkMode = isDarkMode;
   }
   setUserName(userName: string) {
-    console.log(userName);
     this.userName = userName;
   }
 
