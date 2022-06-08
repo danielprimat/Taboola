@@ -1,15 +1,14 @@
 import RNTaboolaView from '@taboola/react-native-taboola';
 import * as React from 'react';
 import {FC} from 'react';
-import {Dimensions, View} from 'react-native';
+import {Dimensions, useColorScheme, View} from 'react-native';
 import styles from './styles';
-import {useStore} from '../../hooks/useStore';
 
 declare interface TaboolaFeedProps {}
 
 const TaboolaFeed: FC<TaboolaFeedProps> = ({}) => {
   const feedHeight = Dimensions.get('window').height * 2;
-  const {isDarkMode} = useStore('configStore');
+  const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <View style={styles.container}>

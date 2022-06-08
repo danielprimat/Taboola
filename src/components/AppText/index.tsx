@@ -1,13 +1,12 @@
-import {Text, TextProps} from 'react-native';
+import {Text, TextProps, useColorScheme} from 'react-native';
 import {FC} from 'react';
 import * as React from 'react';
 import styles from './styles';
-import {useStore} from '../../hooks/useStore';
 
 declare interface AppTextProps extends TextProps {}
 
 const AppText: FC<AppTextProps> = ({...props}) => {
-  const {isDarkMode} = useStore('configStore');
+  const isDarkMode = useColorScheme() === 'dark';
   const style = styles(isDarkMode);
 
   return (
