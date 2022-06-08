@@ -76,3 +76,20 @@ export class ListStore {
     }
   }
 }
+
+// const hasArrayChanged = (previousArray: ListItem[], newArray: ListItem[]) => {
+//   let res = false;
+//   if (previousArray) {
+//     if (previousArray.length === newArray.length) {
+//       for (let i = 0; previousArray.length > i; i++) {
+//         if (!itemsAreTheSame(previousArray[i], newArray[i])) {
+//           res = true;
+//           break;
+//         }
+//       }
+//     } else {
+//       res = true;
+//     }
+//   }
+//   return res;
+// };
