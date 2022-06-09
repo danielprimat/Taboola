@@ -37,7 +37,7 @@ const Home: FC = () => {
       <AppContainer isDarkMode={isDarkMode}>
         {!!configStore.userName && (
           <AppText>
-            {WELCOME} {configStore.userName}
+            {WELCOME} {configStore.userName}!
           </AppText>
         )}
         {listStore.requestStatus === RequestStatus.loading ? (
@@ -65,6 +65,7 @@ const Home: FC = () => {
               />
 
               <AppButton
+                disabled={!listStore.targetValue}
                 onPress={onSearchPress}
                 title={SEARCH}
                 style={styles.appButton}

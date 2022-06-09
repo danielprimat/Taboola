@@ -22,18 +22,20 @@ export class ConfigStore {
   }
 
   public async saveUserNameAsyncStorage(userName: string) {
+    let isUserSaved;
     try {
       if (isValidName(userName)) {
         await saveUseNameAsyncStorage(userName);
         this.setUserName(userName);
-        Alert.alert('user saved');
+        isUserSaved = true;
       } else {
         throw Error('name is not valid');
       }
     } catch (e) {
       console.error(e);
-      Alert.alert('Please enter valid name');
+      isUserSaved = false;
     }
+    return isUserSaved;
   }
 
   public async getUserName() {

@@ -1,6 +1,7 @@
 import {FC, useState} from 'react';
 import * as React from 'react';
 import {
+  Alert,
   Button,
   Linking,
   Platform,
@@ -47,7 +48,15 @@ const SettingsScreen: FC = () => {
       <Button
         title={SAVE}
         onPress={() => {
-          configStore.saveUserNameAsyncStorage(userNameLocal);
+          configStore
+            .saveUserNameAsyncStorage(userNameLocal)
+            .then(isUserSaved => {
+              if (isUserSaved) {
+                Alert.alert('user is Saved');
+              } else {
+                Alert.alert('name is not valid');
+              }
+            });
         }}
       />
       <AppContainer style={styles.appContainer} isDarkMode={isDarkMode}>
