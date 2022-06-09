@@ -20,7 +20,7 @@ const TaboolaFeed: FC<TaboolaFeedProps> = ({}) => {
         placement="Mid Article"
         targetType="mix"
         interceptScroll={true}
-        style={{height: feedHeight}}
+        style={{height: feedHeight, width: '100%'}}
         viewID="12345"
         darkMode={isDarkMode}
         onDidLoad={event => {

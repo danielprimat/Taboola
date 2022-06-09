@@ -10,6 +10,7 @@ const TaboolaWidget: FC = () => {
   return (
     <View style={styles.container}>
       <RNTaboolaView
+        extraProperties={{enableHorizontalScroll: 'true'}}
         removeClippedSubviews={false}
         mode="alternating-widget-without-video-1-on-1"
         publisher="sdk-tester"
