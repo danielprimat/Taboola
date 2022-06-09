@@ -31,6 +31,9 @@ const TaboolaWidget: FC = () => {
               event.nativeEvent.height,
           );
         }}
+        onItemClick={e => {
+          console.log(e);
+        }}
         onDidFailToLoad={event => {
           console.warn(
             'onRenderFail placementName: ' + event.nativeEvent.placementName,

@@ -23,6 +23,9 @@ const TaboolaFeed: FC<TaboolaFeedProps> = ({}) => {
         style={{height: feedHeight, width: '100%'}}
         viewID="12345"
         darkMode={isDarkMode}
+        onItemClick={e => {
+          console.log(e);
+        }}
         onDidLoad={event => {
           // Set the height of the widget dynamically
           // setHeight(parseInt(event.nativeEvent.height, 10));
